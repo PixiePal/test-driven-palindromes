@@ -1,6 +1,11 @@
 const palindromes = require('../palindromes');
 
-const { reverseString, stripPunctuation, isPalindrome } = palindromes;
+const {
+  reverseString,
+  stripPunctuation,
+  isPalindrome,
+  findAllPalindromes,
+} = palindromes;
 
 describe('reverseString()', () => {
   it('reverses a string', () => {
@@ -23,6 +28,15 @@ describe('isPalindrome()', () => {
   });
   it('recognizes a false palindrome', () => {
     expect(isPalindrome('akma')).toBeFalsy();
+  });
+});
+
+describe('findAllpalindromes()', () => {
+  it('identifies all palindromes', () => {
+    expect(findAllPalindromes('madam')).toEqual(['madam', 'ada']);
+  });
+  it('returns empty array if no palindromes', () => {
+    expect(findAllPalindromes('david')).toEqual([]);
   });
 });
 

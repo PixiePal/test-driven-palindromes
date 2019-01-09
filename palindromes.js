@@ -13,9 +13,7 @@ const isPalindrome = str => {
   return str === reverseString(str);
 };
 
-const palindromes = str => {
-  str = stripPunctuation(str.toLowerCase());
-
+const findAllPalindromes = str => {
   let results = [];
 
   for (let i = 0; i < str.length; i++) {
@@ -29,8 +27,16 @@ const palindromes = str => {
     }
   }
 
+  return results;
+};
+
+const palindromes = str => {
+  str = stripPunctuation(str.toLowerCase());
+
+  let allPalindromes = findAllPalindromes(str);
+
   let strippedResults = [];
-  results.forEach((element, index, array) => {
+  allPalindromes.forEach((element, index, array) => {
     let isContained = false;
     for (let i = 0; i < array.length; i++) {
       if (i != index && array[i].indexOf(element) >= 0) {
@@ -49,5 +55,6 @@ const palindromes = str => {
 palindromes.reverseString = reverseString;
 palindromes.stripPunctuation = stripPunctuation;
 palindromes.isPalindrome = isPalindrome;
+palindromes.findAllPalindromes = findAllPalindromes;
 
 module.exports = palindromes;
